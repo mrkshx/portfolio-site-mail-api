@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const sendGrid = require('@sendGrid/mail');
+const sendGrid = require('@sendgrid/mail');
 
 const app = express();
 
@@ -14,3 +14,10 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Authorization');
   next();
 });
+
+app.get('/api', (req, res, next) => {
+  res.send('API Status: Running')
+});
+
+app.listen(3030, '0.0.0.0');
+
