@@ -1,5 +1,5 @@
 const functions = require('firebase-functions');
-const admin = require('firebase-admins');
+const admin = require('firebase-admin');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -39,7 +39,7 @@ app.post('/api/email', (req, res, next) => {
   sendGrid.send(msg)
     .then(result => {
       console.log('SUCCESS: ', result);
-      res.status(200).json({
+      return res.status(200).json({
         success: true
       });
     })
@@ -52,4 +52,4 @@ app.post('/api/email', (req, res, next) => {
 
 });
 
-export const webApi = functions.https.onRequest(app);
+exports.webApi = functions.https.onRequest(app);
