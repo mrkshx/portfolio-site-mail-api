@@ -21,7 +21,6 @@ app.use((req, res, next) => {
     next();
 });
 
-exports.webApi = functions.https.onRequest(app);
 
 app.get('/api', (req, res, next) => {
   res.send('API Status: Running')
@@ -54,3 +53,5 @@ app.post('/api/email', (req, res, next) => {
 
 });
 
+
+exports.webApi = functions.https.onRequest(app);
